@@ -1,4 +1,33 @@
-requests==2.31.0
-python-dotenv==1.0.0
-py-clob-client==0.15.0
+# PolyBot v2 — Python dependencies
+# Install all: pip install -r requirements.txt
+# GPU training: pip install torch --index-url https://download.pytorch.org/whl/cu118
+
+# ── Core HTTP & env ───────────────────────────────────────────────────────────
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# ── Polymarket CLOB client ────────────────────────────────────────────────────
+py-clob-client>=0.15.0
+
+# ── Google Gemini AI ──────────────────────────────────────────────────────────
 google-genai>=1.0.0
+
+# ── Data processing ───────────────────────────────────────────────────────────
+pandas>=2.0.0
+numpy>=1.26.0
+
+# ── Machine Learning ──────────────────────────────────────────────────────────
+scikit-learn>=1.4.0         # LogisticRegression, calibration, CV, metrics
+xgboost>=2.0.0              # XGBoost gradient boosting
+matplotlib>=3.8.0           # Evaluation plots
+
+# ── Deep Learning (optional — for LSTM model) ─────────────────────────────────
+# Uncomment or install separately:
+# torch>=2.1.0              # pip install torch
+# torchvision               # optional
+
+# ── Optional: news sentiment ──────────────────────────────────────────────────
+# newsapi-python>=0.2.7     # pip install newsapi-python (needs NEWSAPI_KEY)
+
+# ── Optional: logging enhancement ────────────────────────────────────────────
+colorlog>=6.0.0

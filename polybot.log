@@ -6,3 +6,44 @@
 2026-03-20 14:25:49,962 | INFO | HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
 2026-03-20 14:26:51,680 | INFO | AFC is enabled with max remote calls: 10.
 2026-03-20 14:26:51,968 | INFO | HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent "HTTP/1.1 404 Not Found"
+2026-03-20 15:17:20,578 | INFO | AFC is enabled with max remote calls: 10.
+2026-03-20 15:17:21,138 | INFO | HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 403 Forbidden"
+2026-03-20 16:17:00,668 | INFO | AFC is enabled with max remote calls: 10.
+2026-03-20 16:17:01,255 | INFO | HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 403 Forbidden"
+2026-04-14 22:38:49 | [32mINFO    [0m | trainer | === Model Training Pipeline ===
+2026-04-14 22:38:49 | [32mINFO    [0m | trainer | Generating synthetic training data (run bot longer for real data)
+2026-04-14 22:39:10 | [32mINFO    [0m | trainer | Dataset: 2000 samples × 32 features
+2026-04-14 22:39:10 | [32mINFO    [0m | trainer | Train: 1600 | Test: 400
+2026-04-14 22:39:10 | [32mINFO    [0m | trainer | Training Logistic Regression...
+2026-04-14 22:39:10 | [32mINFO    [0m | trainer |   Logistic Regression    | RMSE=0.2776 | MAE=0.2596 | Brier=0.0154 | AUC=0.9988 | CV-RMSE=0.2305±0.0432 | n=1600 | 0.2s
+2026-04-14 22:39:10 | [32mINFO    [0m | trainer | Training XGBoost...
+2026-04-14 22:39:15 | [32mINFO    [0m | trainer |   XGBoost                | RMSE=0.0285 | MAE=0.0225 | Brier=0.1120 | AUC=0.9991 | CV-RMSE=0.0226±0.0012 | n=1600 | 0.8s
+2026-04-14 22:39:15 | [32mINFO    [0m | trainer | Training LSTM...
+2026-04-14 22:46:44 | [32mINFO    [0m | trainer |   LSTM                   | RMSE=0.2335 | MAE=0.1976 | Brier=0.2500 | AUC=0.5000 | CV-RMSE=0.0000±0.0000 | n=1600 | 448.9s
+2026-04-14 22:46:44 | [32mINFO    [0m | trainer | Best model: XGBoost (by rmse=0.0285)
+2026-04-14 22:46:44 | [32mINFO    [0m | trainer | Generating synthetic training data (run bot longer for real data)
+2026-04-14 22:47:03 | [33mWARNING [0m | predictor | Could not load xgboost: XGBoostModel.__init__() got an unexpected keyword argument 'colsample_bytree'
+2026-04-14 22:48:21 | [32mINFO    [0m | trainer | === Model Training Pipeline ===
+2026-04-14 22:48:21 | [32mINFO    [0m | trainer | Generating synthetic training data (run bot longer for real data)
+2026-04-14 22:48:40 | [32mINFO    [0m | trainer | Dataset: 2000 samples × 32 features
+2026-04-14 22:48:40 | [32mINFO    [0m | trainer | Train: 1600 | Test: 400
+2026-04-14 22:48:40 | [32mINFO    [0m | trainer | Training Logistic Regression...
+2026-04-14 22:48:41 | [32mINFO    [0m | trainer |   Logistic Regression    | RMSE=0.2776 | MAE=0.2596 | Brier=0.0154 | AUC=0.9988 | CV-RMSE=0.2305±0.0432 | n=1600 | 0.1s
+2026-04-14 22:48:41 | [32mINFO    [0m | trainer | Training XGBoost...
+2026-04-14 22:48:46 | [32mINFO    [0m | trainer |   XGBoost                | RMSE=0.0285 | MAE=0.0225 | Brier=0.1120 | AUC=0.9991 | CV-RMSE=0.0226±0.0012 | n=1600 | 0.6s
+2026-04-14 22:48:46 | [32mINFO    [0m | trainer | Training LSTM...
+2026-04-14 22:52:01 | [32mINFO    [0m | trainer |   LSTM                   | RMSE=0.2402 | MAE=0.2027 | Brier=0.2549 | AUC=0.4138 | CV-RMSE=0.0000±0.0000 | n=1600 | 194.9s
+2026-04-14 22:52:01 | [32mINFO    [0m | trainer | Best model: XGBoost (by rmse=0.0285)
+2026-04-14 22:52:01 | [32mINFO    [0m | trainer | Generating synthetic training data (run bot longer for real data)
+2026-04-14 22:52:10 | [32mINFO    [0m | evaluator | Evaluation plots saved to plots/eval_xgboost.png
+2026-04-14 22:52:11 | [32mINFO    [0m | evaluator | Evaluation plots saved to plots/eval_logistic.png
+2026-04-14 22:52:13 | [32mINFO    [0m | evaluator | Evaluation plots saved to plots/eval_lstm.png
+2026-04-14 23:01:21 | [32mINFO    [0m | backtester | Backtesting synthetic | 600 bars | fee=1.0% slip_coeff=0.0020
+2026-04-14 23:01:41 | [32mINFO    [0m | predictor | Loaded xgboost model from models\xgboost.pkl
+2026-04-14 23:02:06 | [32mINFO    [0m | backtester | Backtesting synthetic | 600 bars | fee=1.0% slip_coeff=0.0020
+2026-04-14 23:02:09 | [32mINFO    [0m | predictor | Loaded xgboost model from models\xgboost.pkl
+2026-04-14 23:02:49 | [32mINFO    [0m | backtester | Backtesting synthetic | 600 bars | fee=1.0% slip_coeff=0.0020
+2026-04-14 23:02:52 | [32mINFO    [0m | predictor | Loaded xgboost model from models\xgboost.pkl
+2026-04-14 23:03:43 | [32mINFO    [0m | predictor | Loaded xgboost model from models\xgboost.pkl
+2026-04-14 23:04:28 | [32mINFO    [0m | backtester | Backtesting synthetic | 600 bars | fee=1.0% slip_coeff=0.0020
+2026-04-14 23:04:32 | [32mINFO    [0m | predictor | Loaded xgboost model from models\xgboost.pkl

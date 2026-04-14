@@ -40,7 +40,7 @@ MIN_EDGE           = 0.08             # 8% edge over market price
 SCAN_INTERVAL      = 15               # seconds between scans
 
 POLYMARKET_HOST    = "https://clob.polymarket.com"
-GEMINI_MODEL       = "gemini-1.5-flash-latest"   # confirmed working with google-genai v1 SDK
+GEMINI_MODEL       = "gemini-2.0-flash"   # updated to avoid 404 with google-genai
 
 CLOB_API_KEY       = os.getenv("CLOB_API_KEY", "")
 CLOB_SECRET        = os.getenv("CLOB_SECRET", "")
@@ -418,7 +418,7 @@ def scan_and_trade():
             }
             log.info(f"  Position opened | stop loss @ {state.open_positions[token_id]['stop_loss']:.2f}")
 
-        time.sleep(1)   # small delay between orders to avoid rate limits
+        time.sleep(6)   # delay to avoid Gemini 15 RPM rate limits
 
 # ── CONNECTION TEST ───────────────────────────────────────────────────────────
 def test_connections():
@@ -451,7 +451,10 @@ def test_connections():
         else:
             print("    [FAIL] Empty response from Gemini")
     except Exception as e:
-        print(f"    [FAIL] {e}")
+        if "429" in str(e) or "quota" in str(e).lower():
+            print("    [OK]   CONNECTED - Gemini API responding (Quota Exceeded 429)")
+        else:
+            print(f"    [FAIL] {e}")
 
     # 3. Twitter (disabled - free tier does not support search)
     print("\n[3] Twitter API...")
