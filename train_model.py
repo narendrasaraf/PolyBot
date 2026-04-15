@@ -24,7 +24,7 @@ import numpy as np
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-from polybot.ml.trainer   import ModelTrainer, load_training_data
+from polybot.ml.trainer   import ModelTrainer, load_resolution_data
 from polybot.ml.evaluator import ModelEvaluator
 from polybot.ml.predictor import MLPredictor, ModelLoader
 from polybot.ml.features  import FEATURE_COLS
@@ -39,12 +39,10 @@ log = get_logger("train_model")
 
 def parse_args():
     p = argparse.ArgumentParser(description="PolyBot ML Training & Evaluation")
-    p.add_argument("--model",   default="all",  choices=["all", "logistic", "xgboost", "lstm"])
+    p.add_argument("--model",   default="all",  choices=["all", "logistic", "xgboost", "lightgbm"])
     p.add_argument("--eval",    action="store_true", help="Evaluate saved models (no retraining)")
     p.add_argument("--plot",    action="store_true", help="Generate or re-generate diagnostic plots")
     p.add_argument("--signal",  action="store_true", help="Run live signal demo on current markets")
-    p.add_argument("--forward", type=int, default=5,  help="Label lookahead steps (default: 5)")
-    p.add_argument("--no-synthetic", action="store_true", help="Skip synthetic data (real data only)")
     return p.parse_args()
 
 
@@ -53,21 +51,21 @@ def parse_args():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def train(args):
-    trainer = ModelTrainer(model_dir="models", test_size=0.20)
-    results = trainer.train_all(n_forward=args.forward)
+    trainer = ModelTrainer(model_dir="models")
+    results = trainer.train_all()   # loads ONLY resolved markets — no synthetic data
 
     if not results:
         print("\n  No training data available.")
-        print("  Run the bot first:  python main.py")
-        print("  Or use:             python train_model.py  (uses synthetic data)")
-        return
+        print("  Run the bot first to accumulate closed markets:  python main.py")
+        print("  Then ensure each market CSV has a 'resolution' column set to 0 or 1.")
+        return None
 
     trainer.print_comparison(results)
-    best_name = trainer.best_model(results, metric="rmse")
+    best_name = trainer.best_model(results, metric="brier")
     print(f"\n  Best model: {best_name}")
 
     # Feature importance of the best tabular model
-    for m_name in ("xgboost", "logistic"):
+    for m_name in ("xgboost", "lightgbm", "logistic"):
         if trainer.get_trained(m_name):
             trainer.print_feature_importance(m_name, top_n=15)
             break
@@ -80,19 +78,25 @@ def train(args):
 # ─────────────────────────────────────────────────────────────────────────────
 
 def evaluate_saved(args, trainer=None):
-    """Evaluate all saved models on held-out test data."""
+    """Evaluate all saved models on held-out test data (resolved markets only)."""
     print("\n" + "=" * 60)
-    print("  MODEL EVALUATION")
+    print("  MODEL EVALUATION (binary resolution labels)")
     print("=" * 60)
 
-    X, y = load_training_data(n_forward=args.forward)
-    if len(X) < 40:
-        print("  Not enough data for evaluation.")
-        return
+    markets = load_resolution_data(min_rows=10)
+    if not markets:
+        print("  No resolved markets found for evaluation.")
+        return None
 
-    n_test        = max(20, int(len(X) * 0.20))
+    from polybot.ml.features import build_multi_market_dataset
+    X, y, _ = build_multi_market_dataset(markets)
+    if len(X) < 40:
+        print(f"  Only {len(X)} samples — need >= 40 for evaluation.")
+        return None
+
+    n_test = max(20, int(len(X) * 0.20))
     X_test, y_test = X[-n_test:], y[-n_test:]
-    prices_test   = X_test[:, 0]    # feature[0] = price (first feature column)
+    prices_test = X_test[:, 0]    # feature[0] = price
 
     evaluator = ModelEvaluator(model_name="auto")
     reports   = evaluator.compare_models(X_test, y_test)
@@ -110,9 +114,9 @@ def evaluate_saved(args, trainer=None):
 
 def generate_plots(X_test, y_test, prices_test):
     print("\n  Generating diagnostic plots...")
-    for model_name in ("xgboost", "logistic", "lstm"):
+    for model_name in ("xgboost", "lightgbm", "logistic"):
         from pathlib import Path
-        pred_path = f"models/{model_name}.pkl" if model_name != "lstm" else "models/lstm.pt"
+        pred_path = f"models/{model_name}.pkl"
         if not Path(pred_path).exists():
             continue
         evl = ModelEvaluator(model_name=model_name)
@@ -171,8 +175,8 @@ if __name__ == "__main__":
     args = parse_args()
 
     print("\n" + "=" * 65)
-    print("  PolyBot ML Training Pipeline")
-    print(f"  Mode: {'eval-only' if args.eval else 'train'} | Model: {args.model} | Forward: {args.forward}")
+    print("  PolyBot ML Training Pipeline (v2 — binary labels, calibrated)")
+    print(f"  Mode: {'eval-only' if args.eval else 'train'} | Model: {args.model}")
     print("=" * 65 + "\n")
 
     trainer_obj = None

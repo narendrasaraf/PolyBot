@@ -1,0 +1,101 @@
+id,question,yes_price,predicted_prob,predicted_outcome
+540816,Russia-Ukraine Ceasefire before GTA VI?,0.55,0.5600319028914201,1
+540817,New Rihanna Album before GTA VI?,0.59,0.6251913001520658,1
+540818,New Playboi Carti Album before GTA VI?,0.55,0.529391076257835,1
+540819,Will Jesus Christ return before GTA VI?,0.49,0.6541555097901959,1
+540820,Trump out as President before GTA VI?,0.53,0.5228498484573292,1
+540843,Will China invades Taiwan before GTA VI?,0.52,0.6349537564059463,1
+540844,Will bitcoin hit $1m before GTA VI?,0.489,0.4991848403702887,0
+540881,GTA VI released before June 2026?,0.017,0.01,0
+544092,Will Harvey Weinstein be sentenced to no prison time?,0.343,0.3933991528952384,0
+544093,Will Harvey Weinstein be sentenced to less than 5 years in prison?,0.043,0.01,0
+544094,Will Harvey Weinstein be sentenced to between 5 and 10 years in prison?,0.059,0.13025990185441594,0
+544095,Will Harvey Weinstein be sentenced to between 10 and 20 years in prison?,0.272,0.2696347158176373,0
+544096,Will Harvey Weinstein be sentenced to between 20 and 30 years in prison?,0.219,0.18853901845055548,0
+544097,Will Harvey Weinstein be sentenced to more than 30 years in prison?,0.07,0.04756865989900892,0
+553824,Will the Carolina Hurricanes win the 2026 NHL Stanley Cup?,0.14,0.20397126199010812,0
+553826,Will the Edmonton Oilers win the 2026 NHL Stanley Cup?,0.07,0.01,0
+553827,Will the Dallas Stars win the 2026 NHL Stanley Cup?,0.073,0.015594657014622391,0
+553828,Will the Colorado Avalanche win the 2026 NHL Stanley Cup?,0.224,0.3282011624562642,0
+553829,Will the Vegas Golden Knights win the 2026 NHL Stanley Cup?,0.075,0.16780994842450914,0
+553830,Will the Tampa Bay Lightning win the 2026 NHL Stanley Cup?,0.138,0.3233261679008555,0
+553831,Will the Los Angeles Kings win the 2026 NHL Stanley Cup?,0.013,0.012192859370837935,0
+553837,Will the Ottawa Senators win the 2026 NHL Stanley Cup?,0.043,0.1243700945931704,0
+553838,Will the Minnesota Wild win the 2026 NHL Stanley Cup?,0.042,0.01,0
+553839,Will the Utah Mammoth win the 2026 NHL Stanley Cup?,0.029,0.01,0
+553843,Will the Philadelphia Flyers win the 2026 NHL Stanley Cup?,0.017,0.050465271957848515,0
+553848,Will the Anaheim Ducks win the 2026 NHL Stanley Cup?,0.016,0.01,0
+553849,Will the Montreal Canadiens win the 2026 NHL Stanley Cup?,0.049,0.0662657041328808,0
+553850,Will the Boston Bruins win the 2026 NHL Stanley Cup?,0.02,0.01,0
+553851,Will the Buffalo Sabres win the 2026 NHL Stanley Cup?,0.057,0.010792084084033517,0
+553852,Will the Pittsburgh Penguins win the 2026 NHL Stanley Cup?,0.031,0.09283469124631699,0
+553856,Will the Oklahoma City Thunder win the 2026 NBA Finals?,0.42,0.35702110610073284,0
+553857,Will the Cleveland Cavaliers win the 2026 NBA Finals?,0.04,0.0974787470083611,0
+553858,Will the New York Knicks win the 2026 NBA Finals?,0.04,0.16986713356574948,0
+553859,Will the Minnesota Timberwolves win the 2026 NBA Finals?,0.013,0.01,0
+553860,Will the Houston Rockets win the 2026 NBA Finals?,0.023,0.16443998292820308,0
+553862,Will the Boston Celtics win the 2026 NBA Finals?,0.124,0.09835177470337769,0
+553863,Will the Los Angeles Lakers win the 2026 NBA Finals?,0.017,0.01,0
+553864,Will the Orlando Magic win the 2026 NBA Finals?,0.005,0.018851915773045534,0
+553865,Will the Denver Nuggets win the 2026 NBA Finals?,0.11,0.17453244162236276,0
+553866,Will the San Antonio Spurs win the 2026 NBA Finals?,0.154,0.1756673620184669,0
+553867,Will the Golden State Warriors win the 2026 NBA Finals?,0.002,0.01,0
+553868,Will the Los Angeles Clippers win the 2026 NBA Finals?,0.005,0.01,0
+553869,Will the Philadelphia 76ers win the 2026 NBA Finals?,0.005,0.01,0
+553871,Will the Detroit Pistons win the 2026 NBA Finals?,0.058,0.08299283524813399,0
+553873,Will the Miami Heat win the 2026 NBA Finals?,0.002,0.01,0
+553876,Will the Toronto Raptors win the 2026 NBA Finals?,0.005,0.01,0
+553877,Will the Phoenix Suns win the 2026 NBA Finals?,0.003,0.01,0
+553879,Will the Portland Trail Blazers win the 2026 NBA Finals?,0.003,0.10458298785718557,0
+553881,Will the Atlanta Hawks win the 2026 NBA Finals?,0.006,0.01,0
+553882,Will the Charlotte Hornets win the 2026 NBA Finals?,0.005,0.0794852038076129,0
+556062,MegaETH market cap (FDV) >$2B one day after launch?,0.12,0.01,0
+556063,MegaETH market cap (FDV) >$6B one day after launch?,0.027,0.040037012727243804,0
+556108,Will MegaETH perform an airdrop by June 30? ,0.45,0.5342010364650976,1
+558934,Will Spain win the 2026 FIFA World Cup?,0.173,0.32486042391008896,0
+558935,Will England win the 2026 FIFA World Cup?,0.111,0.18434567484573638,0
+558936,Will France win the 2026 FIFA World Cup?,0.166,0.01,0
+558937,Will Brazil win the 2026 FIFA World Cup?,0.085,0.10287327637392404,0
+558938,Will Argentina win the 2026 FIFA World Cup?,0.089,0.17860592075645332,0
+558939,Will Germany win the 2026 FIFA World Cup?,0.052,0.08445594452310531,0
+558940,Will Portugal win the 2026 FIFA World Cup?,0.069,0.09223690045180817,0
+558941,Will Netherlands win the 2026 FIFA World Cup?,0.033,0.01,0
+558943,Will USA win the 2026 FIFA World Cup?,0.014,0.023189091315830163,0
+558944,Will Uruguay win the 2026 FIFA World Cup?,0.01,0.07956208688267642,0
+558945,Will Mexico win the 2026 FIFA World Cup?,0.012,0.01,0
+558946,Will Belgium win the 2026 FIFA World Cup?,0.018,0.01,0
+558947,Will Colombia win the 2026 FIFA World Cup?,0.017,0.024831040635916374,0
+558949,Will Japan win the 2026 FIFA World Cup?,0.018,0.01,0
+558951,Will Norway win the 2026 FIFA World Cup?,0.022,0.01,0
+558952,Will Canada win the 2026 FIFA World Cup?,0.006,0.028863841332715842,0
+558954,Will Tunisia win the 2026 FIFA World Cup?,0.003,0.01,0
+558955,Will Ecuador win the 2026 FIFA World Cup?,0.008,0.01,0
+558956,Will Paraguay win the 2026 FIFA World Cup?,0.005,0.046374453749492284,0
+558957,Will New Zealand win the 2026 FIFA World Cup?,0.002,0.039943575762184554,0
+558958,Will Australia win the 2026 FIFA World Cup?,0.003,0.10436416246673795,0
+558959,Will Iran win the 2026 FIFA World Cup?,0.003,0.01,0
+558960,Will Uzbekistan win the 2026 FIFA World Cup?,0.002,0.01,0
+558961,Will South Korea win the 2026 FIFA World Cup?,0.005,0.06545314839538495,0
+558962,Will Jordan win the 2026 FIFA World Cup?,0.002,0.01,0
+558963,Will Morocco win the 2026 FIFA World Cup?,0.016,0.06906912575173321,0
+558964,Will South Africa win the 2026 FIFA World Cup?,0.003,0.01,0
+558965,Will Senegal win the 2026 FIFA World Cup?,0.007,0.01,0
+558966,Will Ivory Coast win the 2026 FIFA World Cup?,0.005,0.01,0
+558967,Will Ghana win the 2026 FIFA World Cup?,0.003,0.09900769720473486,0
+558968,Will Egypt win the 2026 FIFA World Cup?,0.004,0.01,0
+558969,Will Algeria win the 2026 FIFA World Cup?,0.003,0.01,0
+558970,Will Cape Verde win the 2026 FIFA World Cup?,0.002,0.01,0
+558971,Will Qatar win the 2026 FIFA World Cup?,0.002,0.01,0
+558972,Will Saudi Arabia win the 2026 FIFA World Cup?,0.003,0.01,0
+558973,Will Scotland win the 2026 FIFA World Cup?,0.004,0.011430681261134928,0
+558974,Will Switzerland win the 2026 FIFA World Cup?,0.01,0.0838799889770672,0
+558975,Will Austria win the 2026 FIFA World Cup?,0.006,0.01,0
+558976,Will Croatia win the 2026 FIFA World Cup?,0.01,0.192097414260842,0
+558977,Will Haiti win the 2026 FIFA World Cup?,0.002,0.07180028868750116,0
+558978,Will Curaçao win the 2026 FIFA World Cup?,0.003,0.06761381003326011,0
+558979,Will Panama win the 2026 FIFA World Cup?,0.003,0.01,0
+558980,Will Sweden win the 2026 FIFA World Cup?,0.006,0.033518962014858836,0
+558981,Will Congo DR win the 2026 FIFA World Cup?,0.003,0.11792250621767263,0
+558982,Will Iraq win the 2026 FIFA World Cup?,0.002,0.01,0
+558983,Will Bosnia-Herzegovina win the 2026 FIFA World Cup?,0.004,0.025936332662445834,0
+558984,Will Cezchia win the 2026 FIFA World Cup?,0.004,0.12960430257924505,0

@@ -61,14 +61,19 @@ GEMINI_MODEL      = "gemini-2.0-flash"
 LOG_LEVEL         = os.getenv("LOG_LEVEL", "INFO")
 DATA_DIR          = os.getenv("DATA_DIR", "data")          # historical CSV storage
 
+# ── Signal & Filter Thresholds ────────────────────────────────────────────────
+MIN_EV_THRESHOLD  = 0.04          # minimum EV/stake to signal a trade (replaces MIN_EDGE as decision gate)
+
 # ── Strategy Weights (must sum to 1.0) ───────────────────────────────────────
+# ML weight is 0.40 (calibrated, post-rewrite) vs 0.10 in the old system.
+# Reddit is 0.05 — confidence capped at 0.25 until NLP model is integrated.
 SIGNAL_WEIGHTS = {
-    "momentum":    0.20,
-    "mean_rev":    0.15,
-    "prob_gap":    0.20,
-    "news":        0.20,
-    "reddit":      0.10,
-    "ml":          0.10,
+    "momentum":    0.10,   # reduced: ML now carries more weight
+    "mean_rev":    0.10,   # reduced: ML now carries more weight
+    "prob_gap":    0.15,
+    "news":        0.15,
+    "reddit":      0.05,   # capped at 0.25 confidence — bag-of-words NLP only
+    "ml":          0.40,   # raised to 0.40 (calibrated, binary-label model)
     "base_rate":   0.05,
 }
 assert abs(sum(SIGNAL_WEIGHTS.values()) - 1.0) < 1e-6, "Signal weights must sum to 1.0"
