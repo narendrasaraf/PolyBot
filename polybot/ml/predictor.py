@@ -113,10 +113,11 @@ class MLSignal:
     @property
     def is_actionable(self) -> bool:
         """True if the signal is strong enough to execute a trade."""
+        active_ev = self.ev_yes if self.direction == "BUY_YES" else self.ev_no
         return (
             self.direction != "HOLD"
             and self.confidence >= MIN_CONFIDENCE
-            and abs(self.ev_yes if self.direction == "BUY_YES" else self.ev_no) > DEFAULT_EV_THRESHOLD
+            and active_ev > DEFAULT_EV_THRESHOLD   # must be POSITIVE EV, not abs
         )
 
     @property

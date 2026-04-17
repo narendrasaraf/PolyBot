@@ -322,7 +322,7 @@ class ModelEvaluator:
     def compare_models(self, X_test: np.ndarray, y_test: np.ndarray) -> list[EvalReport]:
         """Evaluate all three model families and return comparison."""
         reports = []
-        for name in ("xgboost", "logistic", "lstm"):
+        for name in ("xgboost", "logistic", "lightgbm"):  # lstm removed in ML rewrite
             m = ModelLoader.load_by_name(name)
             if m is None:
                 continue

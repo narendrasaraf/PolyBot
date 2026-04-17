@@ -140,11 +140,14 @@ def trading_cycle():
     # ── Step 1: Monitor all open positions ───────────────────────────────────
     exits = executor.monitor_positions()
     for e in exits:
+        # Use richer position data when available (entry/exit/size from executor dict)
         perf.record(
-            question     = e.get("reason", "?"),
-            side         = "EXIT",
-            entry_price  = 0, exit_price = 0,
-            size_dollars = 0, pnl        = e["pnl"],
+            question     = e.get("question", e.get("reason", "?")),
+            side         = e.get("side", "EXIT"),
+            entry_price  = e.get("entry_price", 0.0),
+            exit_price   = e.get("exit_price",  0.0),
+            size_dollars = e.get("size_dollars", max(abs(e["pnl"]), 0.01)),
+            pnl          = e["pnl"],
             exit_reason  = e["reason"],
         )
 

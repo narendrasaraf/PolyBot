@@ -686,6 +686,8 @@ class Backtester:
             avg_win_usd=0, avg_loss_usd=0, profit_factor=0, expectancy=0,
             max_drawdown=0, max_drawdown_usd=0, sharpe_ratio=0, sortino_ratio=0,
             calmar_ratio=0, avg_edge=0, avg_confidence=0, fee_drag_pct=0, slip_drag_pct=0,
+            equity_curve=[self.initial_capital],  # non-empty so plot helpers don't crash
+            trades=[],
         )
 
 

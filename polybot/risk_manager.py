@@ -54,8 +54,8 @@ class Position:
     order_id:      str = ""
 
     @property
-    def unrealised_pnl(self, current_price: float = None) -> float:
-        """Requires current_price to be injected externally."""
+    def unrealised_pnl(self) -> float:
+        """Placeholder — inject current_price via pnl_at() for real P&L."""
         return 0.0
 
     def pnl_at(self, current_price: float) -> float:
@@ -161,9 +161,11 @@ class DailyState:
                 self.wins         = data.get("wins", 0)
                 self.losses       = data.get("losses", 0)
                 self.trade_history = data.get("trade_history", [])
-                # Restore open positions
+                # Restore open positions — strip non-field keys (e.g. computed properties)
+                _pos_fields = {f.name for f in Position.__dataclass_fields__.values()}
                 for cid, pd_ in data.get("open_positions", {}).items():
-                    self.open_positions[cid] = Position(**pd_)
+                    filtered = {k: v for k, v in pd_.items() if k in _pos_fields}
+                    self.open_positions[cid] = Position(**filtered)
                 log.info(f"Loaded previous state: {self.trades} trades, P&L=${self.realised_pnl:.2f}")
         except FileNotFoundError:
             log.info("No previous state found — starting fresh.")

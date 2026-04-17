@@ -43,7 +43,13 @@ def _build_clob_headers(method: str, path: str, body: str = "") -> dict:
     ts      = str(int(time.time()))
     nonce   = str(int(time.time() * 1000))
     message = ts + method.upper() + path + body
-    secret_bytes = base64.b64decode(CLOB_SECRET) if CLOB_SECRET else b""
+    secret_bytes = b""
+    if CLOB_SECRET:
+        try:
+            secret_bytes = base64.b64decode(CLOB_SECRET)
+        except Exception:
+            # Secret not base64-encoded — use raw bytes as fallback
+            secret_bytes = CLOB_SECRET.encode("utf-8")
     sig = hmac.new(secret_bytes, message.encode(), hashlib.sha256).hexdigest()
     return {
         "Authorization":  f"Bearer {CLOB_API_KEY}",
@@ -263,7 +269,17 @@ class Executor:
             exit_reason = self.risk.get_exit_reason(pos, current_price)
             if exit_reason:
                 pnl = self.exit_position(pos, current_price, exit_reason)
-                exits.append({"condition_id": cid, "pnl": pnl, "reason": exit_reason})
+                exits.append({
+                    "condition_id": cid,
+                    "pnl":          pnl,
+                    "reason":       exit_reason,
+                    # Enriched fields for PerformanceTracker
+                    "question":     pos.question,
+                    "side":         pos.side,
+                    "entry_price":  pos.entry_price,
+                    "exit_price":   current_price,
+                    "size_dollars": pos.size_dollars,
+                })
 
         return exits
 

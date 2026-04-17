@@ -290,6 +290,7 @@ class HistoricalStore:
             return pd.DataFrame(columns=self.COLUMNS)
         df = pd.read_csv(path, parse_dates=["fetched_at"])
         df.sort_values("fetched_at", inplace=True)
+        df.reset_index(drop=True, inplace=True)   # ensure clean 0-based index after sort
         return df
 
     def list_markets(self) -> list[str]:
