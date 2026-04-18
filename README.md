@@ -4,6 +4,7 @@ A modular, production-grade Python trading bot for [Polymarket](https://polymark
 
 ---
 
+
 ## Architecture
 
 ```
