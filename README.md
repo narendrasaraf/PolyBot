@@ -1,4 +1,4 @@
-# PolyBot v2 — Production Polymarket Trading Bot
+# PolyBot — Production Polymarket Trading Bot
 
 A modular, production-grade Python trading bot for [Polymarket](https://polymarket.com) with multi-signal strategy engine, full risk management, automated execution, backtesting, and performance analytics.
 
